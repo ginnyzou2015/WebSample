@@ -13,8 +13,8 @@ class Api::V1::TasksController < ApplicationController
   "info":"ok",
   "data":{
           "tasks":[
-                    {"title":"Complete the app"},
-                    {"title":"Complete the tutorial"}
+                    {"title":"Beacon Info1"},
+                    {"title":"Beacon Info2"}
                   ]
          }
 }'
