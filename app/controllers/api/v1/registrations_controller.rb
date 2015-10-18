@@ -7,11 +7,12 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_permitted_parameters
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up).push(:name)
     devise_parameter_sanitizer.for(:sign_up).push(:beacon_id)
+    devise_parameter_sanitizer.for(:sign_up).push(:name)    
   end
 
   def create
+    print sign_up_params
     build_resource(sign_up_params)
     if resource.save
       sign_in(resource, :store => false)
