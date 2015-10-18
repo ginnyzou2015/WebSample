@@ -13,7 +13,7 @@ class Api::V1::SessionsController < Devise::SessionsController
   def create
     warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#failure")
     @user = User.find_by_email(sign_in_params["email"])
-    @user.update(name: sign_in_params["name"])
+    @user.update(beacon_id: sign_in_params["beacon_id"])
     render :status => 200,
            :json => { :success => true,
                       :info => "Logged in",
