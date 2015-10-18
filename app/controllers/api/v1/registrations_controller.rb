@@ -12,7 +12,6 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    print sign_up_params
     build_resource(sign_up_params)
     if resource.save
       sign_in(resource, :store => false)
