@@ -4,8 +4,16 @@ class Api::V1::SessionsController < Devise::SessionsController
 
   respond_to :json
 
+  before_filter :configure_permitted_parameters
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_in).push(:name)
+  end
+
   def create
     warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#failure")
+    @user = User.find_by_email(sign_in_params["email"])
+    @user.update(name: sign_in_params["name"])
     render :status => 200,
            :json => { :success => true,
                       :info => "Logged in",
