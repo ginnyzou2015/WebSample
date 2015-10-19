@@ -18,7 +18,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
       render :status => 200,
            :json => { :success => true,
                       :info => t("devise.registrations.signed_up"),
-                      :data => { :user => resource,
+                      :data => { :user => sign_in_params["email"],
                                  :auth_token => current_user.authentication_token } }
     else
       render :status => :unprocessable_entity,
