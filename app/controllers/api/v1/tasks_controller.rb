@@ -14,6 +14,8 @@ class Api::V1::TasksController < ApplicationController
     render :status => 200,
            :json => { :success => true,
                       :info => "Logged in",
-                      :data => {  :tasks => @beacon_id }}
+                      :data => {  :tasks => [
+                                              @beacon_id,
+                                              @email_id ] }}
   end
 end
