@@ -15,7 +15,7 @@ class Api::V1::TasksController < ApplicationController
            :json => { :success => true,
                       :info => "Logged in",
                       :data => {  :tasks => [
-                                              @beacon_id,
-                                              @email_id ] }}
+                                               :recommend1 => @beacon_id,
+                                               :recommend2 => @email_id ] }}
   end
 end
