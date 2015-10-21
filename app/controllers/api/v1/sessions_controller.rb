@@ -18,6 +18,7 @@ class Api::V1::SessionsController < Devise::SessionsController
            :json => { :success => true,
                       :info => "Logged in",
                       :data => {  :user => sign_in_params["email"],
+                                  :beacon => sign_in_params["beacon_id"],
                                   :auth_token => current_user.authentication_token } }
   end
 
