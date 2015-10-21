@@ -10,7 +10,8 @@ class Api::V1::TasksController < ApplicationController
   def index
     @email_id = params[:id] + ".com"
     @beacon_id = User.find_by_email(@email_id).beacon_id
-    @recommendation = Recommendation.where(:user => @email_id, :beacon => @beacon_id).first
+    @recommendation_record = Recommendation.where(:user => @email_id, :beacon => @beacon_id).first
+    @recommendation = @recommendation_record.recommendation
     render :status => 200,
            :json => { :success => true,
                       :info => "Logged in",
